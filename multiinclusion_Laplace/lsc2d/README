@@ -1,0 +1,101 @@
+LSC2D: Laplace and Stokes layer-potential evaluation close to the curve.
+Version 1.01
+
+       Alex H. Barnett and Bowei Wu             10/8/14
+
+ahb@math.dartmouth.edu
+
+All codes are MATLAB. We have tested on MATLAB R2012a, and all
+MATLAB usage is standard. We have not tested on octave; there may be
+minor changes needed for that.
+The main codes have documentation; the test drivers less so.
+Please see accompanying preprint for explanation of use.
+Use at your own risk; enjoy responsibly.
+
+List of codes in this directory (Cauchy and Laplace codes are by Alex Barnett,
+and Stokes codes are mostly by Bowei Wu). The figure and test codes are
+useful to see examples of calling the evaluation codes. The code quadr.m is
+generally useful for setting up curves from formulae or existing nodes:
+
+  --- CAUCHY ---
+
+cauchycompeval.m	: interior/exterior evaluation of analytic function
+			  and its first derivative via trapezoid rule
+			  applied to Cauchy integral formula, in
+			  compensated 2nd-kind barycentric form.
+fig_cauchycompeval.m	: test driver for cauchycompeval, makes convergence
+			  figures (Fig. 3.1 in preprint).
+quadr.m			: useful helper function to set up curve nodes, etc
+goodbw.m		: helper containing new colorscale that becomes
+			  linear grayscale when printed in black and white.
+
+  --- LAPLACE ---
+
+lapSevalclose.m		: single-layer potential evaluation and its gradient,
+			  interior/exterior.
+lapDevalclose.m		: double-layer potential evaluation and its gradient,
+			  interior/exterior.
+testlapSDevalclose.m    : test one of four Laplace BVPs using Nystrom method
+			  and new potential & field evaluation scheme, showing
+			  errors against the known solution.
+tbl_lapconv.m		: test sup norm convergence for all 4 BVP types,
+			  producing text output data (Table 4.1 in preprint).
+
+  --- STOKES ---
+
+StokesSevalclose.m	: single-layer potential evaluation, interior/exterior
+StokesDevalclose.m	: double-layer potential evaluation, interior/exterior
+testStokesSDevalclose.m : test one of four Stokes BVPs using Nystrom method
+			  and new potential & field evaluation scheme, showing
+			  errors against the known solution, and text output.
+tbl_Stokesconv.m	: test sup norm convergence for all 4 BVP types,
+			  producing text output data (Table 5.1 in preprint).
+kernelS.m		: helper function for testStokesSDevalclose.m
+quadratureS.m		: "
+give_the_weights.m 	: "
+regular_weights.m 	: "
+sinterpS.m		: "
+nodes_logx.dat		: "
+nodes_regular.dat	: "
+DmFT.m			: "
+
+testall.m		: complete test suite, runs quadr('test'),
+			  fig_cauchycompeval.m,
+			  tbl_lapconv.m, and tbl_Stokesconv.m
+
+----------------------
+
+To do:
+
+* Include Kress for Stokes SLP Nystrom self-matrix
+
+* In Stokes, provide optional pressure output values at targets too.
+
+* More examples of use in documentation. Checking of inputs, reporting errors.
+
+* Switch to Helsing's exterior version, and try Trefethen's "interpolate the
+  derivative" to bypass all messy barycentric-form derivs, delta, etc.
+
+* Make beta an option in StokesDcloseeval.
+
+* Make upsampling an option everywhere, to recover same acc as native in
+  far-field ?
+
+* split off utils like perispecdiff, fftinterp, diagind, circulant...?
+
+* Fortran/C/OpenMP implementation for all, could be 10x faster
+
+* Make octave-compatible.
+
+* Put on github.
+
+
+Version history:
+
+1.01 10/8/14: quadr() split out from all codes, documented.
+     	      Stokes interface changed to use s for curve, not y for nodes.
+	      Found that int Neu Table 5.1 changed switching quadr to Z,Zp.
+	      Removed spec_interp since fftinterp does it. AHB
+1.0 10/7/14:  initial bundle. AHB
+
+----------------------

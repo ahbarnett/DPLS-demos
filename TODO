@@ -1,0 +1,5 @@
+TODO
+
+* bring in BIE2D singleinclusion
+* make stokes use my GenerateIslands which resamples
+* debug stokes driver_convergetest - much worse than driver.m

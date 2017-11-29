@@ -1,0 +1,45 @@
+
+Multi-inclusion doubly-periodic Laplace fast solver w/ Neumann BCs on
+large number of random smooth inclusions (islands).
+
+Language: MATLAB
+
+By: Gary Marple and Alex Barnett.  (C) 2017.
+
+This directory contains 3rd-party codes including:
+lsc2d: Alex Barnett and Bowei Wu (hacked version)
+inpoly: Darren Engwirda
+gauss: Nick Trefethen
+
+Requires: FMMLIB2D and kdtree (both in parent directory; run ../setup.m to
+add them to the path)
+
+Once in MATLAB, first run setup.m to configure the MATLAB path.
+
+
+1) Running a single solution
+
+To begin, open TestScript.m and edit the parameters as desired. Then,
+run TestScript.m to generate a .mat file that contains the inclusion
+positions and the parameter values that were decided on in
+TestScript.m. To solve the 2D Neumann Laplace doubly-periodic BVP, run
+LaplaceSolver.m using the name of the .mat file as its input. To view
+a plot of the solution, run PlotSolution.m. To compute the flux
+between the left and right sides of the domain, use SolutionFlux.m.
+
+% Example (see driver.m)
+>>setup  % sets up MATLAB path
+>>TestScript
+% Suppose TestScript generates the .mat file Script.mat
+>>LaplaceSolver('Script')
+% To compute the flux, run
+>>SolutionFlux('Script')
+% To plot the solution and its gradient magnitude, run
+>>PlotSolution('Script')
+
+
+2) Running a convergence study for fixed geometry
+
+Edit the code driver_convergetest.m to your needs.
+This code loops the above over a set of Nk (quadrature nodes per inclusion)
+then plots the geometry and the convergence of estimated flux error.
