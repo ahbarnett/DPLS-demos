@@ -1,4 +1,5 @@
 TODO
 
+* add kdtree!
 * debug stokes driver_convergetest - much worse than driver.m (which works at Nk=200).
 * possibly fix 45degree offset of Gary's Stokes grid evals from curve geoms.
