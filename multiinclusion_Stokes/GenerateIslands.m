@@ -1,36 +1,38 @@
 function [I,N]=GenerateIslands(M,n)
+% n = desired Nk
 
-S=[];
+S=[];   % will be Nx2 list of all points of curves as built up
 R0=10*sqrt(10)/6.9/sqrt(M);
 rate=1.05;
 R=R0*rate;
-while size(S,1)/n<M
+n0 = 1e3;    % Nk for building geom only
+while size(S,1)/n0<M
     R=R/rate;
     MR=round(5/R^2);
     %S0=MakeSofR(R,MR,n);
-    S0=MakeBarnettShape(R,MR,n);
-    S0=IslandIntersect(S0,S,n);
-    S=IslandIntersect(S,S0,n);
-    S0=RecursiveIntersect(S0,n);
-    S0=RecursiveIntersect(S0,n);
+    S0=MakeBarnettShape(R,MR,n0);
+    S0=IslandIntersect(S0,S,n0);
+    S=IslandIntersect(S,S0,n0);
+    S0=RecursiveIntersect(S0,n0);
+    S0=RecursiveIntersect(S0,n0);
     S=[S;S0];
 end
-S=S(1:M*n,:);
+S=S(1:M*n0,:);
 
 ls=0;
 I=cell(M,1);
 for k=1:M
-    I{k}.x=S(ls+1:ls+n,:)*[1;1i]-pi-1i*pi;
-    area=Area(real(I{k}.x([1:end,1])),imag(I{k}.x([1:end,1])));
+    I{k}.x=S(ls+1:ls+n0,:)*[1;1i]-pi-1i*pi;  % convert to C-# and translate
+    area=Area(real(I{k}.x([1:end,1])),imag(I{k}.x([1:end,1])));  % true area
     xc=Area(real(I{k}.x([1:end,1])).^2/2,imag(I{k}.x([1:end,1])))/area;
-    yc=Area(real(I{k}.x([1:end,1])).*imag(I{k}.x([1:end,1])),imag(I{k}.x([1:end,1])))/area;
-    I{k}.x=0.97*(I{k}.x-xc-1i*yc)+xc+1i*yc;
-    ls=ls+n;
+    yc=Area(real(I{k}.x([1:end,1])).*imag(I{k}.x([1:end,1])),imag(I{k}.x([1:end,1])))/area;  % mystery - centroid of area assuming cont mass density?
+    I{k}.x=0.97*(I{k}.x-xc-1i*yc)+xc+1i*yc;   % rescale about (xc,yc)
+    % 0.97
+    I{k}.x = perispecinterp(I{k}.x,n);    % resample to desired N_k, ahb
+    ls=ls+n0;
 end
 N=n*ones(length(I),1);
 
-
-ls=0;
 for k=1:M
     for i=-1:1
         for j=-1:1
@@ -38,7 +40,6 @@ for k=1:M
             hold on
         end
     end
-    ls=ls+n;
 end
 axis equal
 axis([-pi pi -pi pi])
@@ -62,7 +63,7 @@ t=t(1:end-1);
 t=t*ones(1,M);
 alpha=0.5*ones(n,1)*rand(1,M);
 beta=2*pi*ones(n,1)*rand(1,M);
-w=floor(7*ones(n,1)*rand(1,M)+2);
+w=floor(7*ones(n,1)*rand(1,M)+2);      % note differs from Laplace choice
 R=R*(1+alpha.*cos(w.*t+beta));
 x=cos(t).*R;
 y=sin(t).*R;
