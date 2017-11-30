@@ -140,8 +140,10 @@ end
 disp('flux J1 M-convergence for ELS:')
 Js(1,:)'
 figure; semilogy(Ms,abs(Js(1,:)-Js(1,end)),'b+-'); hold on;
-h = load('/home/alex/physics/shravan/dpls/Fig22eData.mat');  % K=1e2 M-conv
-plot(h.M,abs(h.J-h.J(end)),'bs-');
+if 0 % use to add K=1e2 data to plot
+  h = load('/home/alex/physics/shravan/dpls/Fig22eData.mat');  % K=1e2 M-conv
+  plot(h.M,abs(h.J-h.J(end)),'bs-');
+end
 semilogy(Ms,nrms,'b.-');
 semilogy(Ms,sings(:,2:end),'-','color',.5*[1 1 1]);
 legend('J_1 conv, Ex.1', 'J_1 conv, Ex.2','soln norm, Ex.1','sing vals, Ex.1','location','east');

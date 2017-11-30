@@ -3,8 +3,8 @@
 Numerical codes for CPAM paper on doubly-periodic Laplace and Stokes (DPLS).
 These demonstrate numerical homogenization of random periodic smooth
 geometries for the
-potential-drop-driven Laplace and conduction
-Neumann BVPs, and the pressure-drop-driven
+potential-drop-driven Laplace Neumann and conduction
+BVPs, and the pressure-drop-driven
 Stokes Dirichlet (no-slip velocity) BVP.
 
 Language: MATLAB (driving FMMLIB2D which uses MEX interfaces to fortran binaries). No MATLAB Toolboxes are needed. It has been tested on MATLAB R2016b.
@@ -17,7 +17,7 @@ Authors: Gary Marple and Alex Barnett.  (C) 2017.
   * `multiinclusion_Laplace` - fast (FMM-based iterative) code for large-scale Laplace demos (by Marple)  
   * `multiinclusion_Stokes` - fast (FMM-based iterative) code for large-scale Stokes demos (by Marple)  
   * `FMM` - FMMLIB2D of Greengard-Gimbutas (MEX binaries and MATLAB interface only; see [here](https://github.com/zgimbutas/fmmlib2d) for full library)  
-  * `kdtree` - kd-tree implementation by Andrea Tagliasacchi, needed for geometry generation in multi-inclusion cases (a snapshot of [this](https://github.com/ataiya/kdtree))  
+  * `kdtree` - kd-tree implementation by Andrea Tagliasacchi, needed for geometry handling in multi-inclusion cases (a snapshot of [this](https://github.com/ataiya/kdtree))  
 
 The demos are found in the first three directories; please follow the READMEs found therein.
 
