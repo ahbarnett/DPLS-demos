@@ -1,5 +1,7 @@
 function Z=At_operator(X,I,N,s,t,mu,h,NPt)
 
+% s = source struct, t = target struct
+
 MI=length(I);
 X1=zeros(sum(N),1);
 M=length(t.x);

@@ -34,12 +34,12 @@ U.B=B;
 
 
 
-n=128;
+n=256;
 [X,Y]=meshgrid(-0.5:1/(n-1):0.5);
 
 t.x=reshape(X,n^2,1)+1i*reshape(Y,n^2,1);
 
-if ~exist('u','var')||size(u,1)~=size(t.x,1)
+%if ~exist('u','var')||size(u,1)~=size(t.x,1)   % ahb considers dangerous.
     u=zeros(n^2,1);
     ux=u;
     uy=u;
@@ -57,8 +57,8 @@ if ~exist('u','var')||size(u,1)~=size(t.x,1)
         uy(ls+1:lsmax)=uy(ls+1:lsmax)+UY*Psi+uuy;
         ls=lsmax;
     end
-    save(FileName,'u','ux','uy','-append')
-end
+%    save(FileName,'u','ux','uy','-append')
+%end
 
 u=reshape(u,n,n);
 ux=reshape(ux,n,n);
@@ -75,6 +75,7 @@ maxu=max(max(u));
 LCurv=linspace(minu,maxu,10*sqrt(length(s.len))/5);
 LCurv=LCurv(2:end-1);
 contour(X,Y,u,LCurv,'k','LineWidth',0.5)
+colorbar; title('u')
 set(gcf, 'Renderer', ' painters');
 ls=0;
 for k=1:s.M
@@ -86,6 +87,7 @@ for k=1:s.M
    ls=ls+s.len(k);
 end
 
+if 0
 figure
 ls=0;
 for k=1:s.M
@@ -102,7 +104,7 @@ axis equal
 axis([-0.5 0.5 -0.5 0.5])
 axis off
 set(gca,'color','none')
-
+end
 
 figure
 pcolor(X,Y,sqrt(ux.^2+uy.^2))
@@ -122,5 +124,6 @@ for k=1:s.M
 end
 uxmin=min(min(sqrt(ux.^2+uy.^2)));
 uxmax=max(max(sqrt(ux.^2+uy.^2)));
-caxis([uxmin,(uxmax+uxmin)/8])
+%caxis([uxmin,(uxmax+uxmin)/8]);
+colorbar; title('|grad u|')
 end

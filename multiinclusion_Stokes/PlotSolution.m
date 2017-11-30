@@ -18,7 +18,7 @@ H = uc.d; L.x = -uc.d/2+ 1i*H*x-uc.d/2*1i; L.nx = 0*L.x+1; L.w = H*w; % left sid
 R = L; R.x = L.x+uc.d; % right side
 
 
-n=128;
+n=256;
 [X,Y]=meshgrid(-pi:2*pi/(n-1):pi);
 
 t.x=reshape(X,n^2,1)+1i*reshape(Y,n^2,1);
@@ -40,10 +40,10 @@ end
 in=inpoly([real(t.x),imag(t.x)],node,edge);
 tt.x=t.x(~in);
 
-if ~exist('uu')||size(uu,1)~=2*size(tt.x,1)
+%if ~exist('uu')||size(uu,1)~=2*size(tt.x,1)   % ahb removed since dangerous!
     uu=EvalSolution(FileName,tt);
-    save(FileName,'uu','-append')
-end
+%    save(FileName,'uu','-append')
+%end
 
 u=zeros(2*n^2,1);
 u([~in;~in])=uu;
@@ -114,6 +114,7 @@ caxis([minu,maxu])
 title('|u|_2')
 axis off
 
+if 0
 figure
 ls=0;
 for k=1:s.M
@@ -129,3 +130,4 @@ colormap(jet(1000))
 axis equal
 axis([-pi pi -pi pi])
 axis off
+end

@@ -38,7 +38,7 @@ ls=0;
 while ls<n
     lsmax=min(ls+2e5,n);
     zz.x=z.x(ls+1:lsmax);
-    uu=At_operator(Eta,I,N,s,zz,mu,h);
+    uu=At_operator(Eta,I,N,s,zz,mu,h);   % 0*h would turn off close-eval (ahb)
     u([ls+1:lsmax,end/2+ls+1:end/2+lsmax])=u([ls+1:lsmax,end/2+ls+1:end/2+lsmax])+SLPmatrix(zz,b,mu)*Xi+uu;
     ls=lsmax;
 end

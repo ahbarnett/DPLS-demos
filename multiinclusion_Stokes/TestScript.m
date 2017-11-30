@@ -6,11 +6,11 @@ function TestScript
 
 RANDNUM=2; % Seed for random number generator
 rng(RANDNUM)
-MI=10; % K, Number of inclusion (try 10 to 1e3)
+MI=5; % K, Number of inclusion (try 5 to 1e3)
 Nk=200; % Nk, Number of points per inclusion
 tic; [I,N]=GenerateIslands(MI,Nk); toc, drawnow  % Generates inclusion
-n=22; % Number of points per side
-M=80; % Number of proxy points
+n=22; % Number of points per side (note name differs from Laplace case)
+M=80; % Number of proxy points (note name differs from Laplace case)
 MAXIT=400; % Maximumn number of GMRES iterations
 ACC=1e-14; % Tolerance for GMRES solver
 save Script % Name of .mat file to be generate
