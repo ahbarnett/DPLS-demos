@@ -11,6 +11,9 @@ Language: MATLAB (driving FMMLIB2D which uses MEX interfaces to fortran binaries
 
 Authors: Gary Marple and Alex Barnett.  (C) 2017.
 
+![doubly-periodic Stokes flow speed for 1000 inclusions](images/stokesK1e3.png)
+
+
 ### Contents of directory:
 
   * `singleinclusion` - Laplace Neumann and conduction, and Stokes, codes with one inclusion (island) per unit cell, dense linear algebra (by Barnett). Includes codes to generate tables for the periodic square array of discs  
