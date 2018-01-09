@@ -36,8 +36,8 @@ end
 figure; semilogy(ms,verrs,'+-'); xlabel('m'); ylabel('max abs error in v');
 axis([min(ms) max(ms) 1e-16 1]);
 text(4,1e-1,'(a)','fontsize',12);
-text(15,1e-1,sprintf('$M=%d$',M),'interpreter','latex','fontsize',12);
-set(gcf,'paperposition',[0 0 3 3]);
+text(14,1e-1,sprintf('$M=%d$',M),'interpreter','latex','fontsize',12);
+set(gcf,'paperposition',[0 0 2.4 3]);
 %print -depsc2 figs/lapQmconv.eps
 
 m = 22; [U L R B T] = doublywalls(U,m); g = discrep(L,R,B,T,ve,vex,vey); % fix
@@ -67,9 +67,9 @@ rB = sqrt(0.5); semilogy(Ms,0.05*(rho/rB).^(-Ms/2),'r--');  % conv rate!
 xlabel('M');
 %ylabel('max abs error in v');
 axis([min(Ms) max(Ms) 1e-17 max(nrms)]);
-text(15,max(nrms)/10,'(b)','fontsize',12);
-text(90,max(nrms)/10,sprintf('$m=%d$',m),'interpreter','latex','fontsize',12);
-set(gcf,'paperposition',[0 0 3 3]);
+text(15,max(nrms)/20,'(b)','fontsize',12);
+text(80,max(nrms)/20,sprintf('$m=%d$',m),'interpreter','latex','fontsize',12);
+set(gcf,'paperposition',[0 0 2.4 3]);
 set(gca,'ytickmode','manual', 'ytick',[1e-15 1e-10 1e-5 1 1e5]);
 %print -depsc2 figs/lapQMconv.eps
 

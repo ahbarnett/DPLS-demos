@@ -45,9 +45,9 @@ semilogy(Ms,nrms,'go-');
 rB = sqrt(0.5); semilogy(Ms,0.05*(rho/rB).^(-Ms/2),'r--');  % conv rate!
 xlabel('M');
 axis([min(Ms) max(Ms) 1e-17 max(nrms)]);
-text(15,max(nrms)/10,'(c)','fontsize',12);
-text(90,max(nrms)/10,sprintf('$m=%d$',m),'interpreter','latex','fontsize',12);
-set(gcf,'paperposition',[0 0 3 3]);
+text(15,max(nrms)/20,'(c)','fontsize',12);
+text(70,max(nrms)/20,sprintf('$m=%d$',m),'interpreter','latex','fontsize',12);
+set(gcf,'paperposition',[0 0 2.4 3]);
 set(gca,'ytickmode','manual', 'ytick',[1e-15 1e-10 1e-5 1 1e5]);
 %print -depsc2 figs/stoQMconv.eps
 %%%%%%%%%%%%%%%%%
