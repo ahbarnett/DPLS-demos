@@ -1,6 +1,7 @@
 function fig_lapconvK1
 % Laplace Neu periodic BVP, convergence and soln plots. Single inclusion (K=1).
 % All dense matrices, native quadr for solve, close eval for plot.
+% Produces Fig. 2.2(a),(c),(e) (needs Stokes data for all lines in (e)).
 % Barnett, cleaned up from perineu2dnei1.m 5/11/16.
 % Small codes broken out 6/12/16 (no longer self-contained); BIE2D 6/29/16
 % X,y,r notation & non-random r, 8/17/16. 5x5 known src 8/23/16.
@@ -115,12 +116,11 @@ plot(Ns,abs(ust-ust(i)),'+--');
 plot(Ns,abs(Jst(1,:)-Jst(1,end)),'go--');
 %plot(Ns,rest,'rd-');
 plot(Ns,abs(es),'ks-');
-%legend('u convergence','J_1 convergence','u err vs known');
 legend('u conv ELS','J_1 conv ELS','u conv Schur','J_1 conv Schur','u err vs known');
 xlabel('N'); text(40,1e-4,'(c)');
 text(140,1e-8, sprintf('$M=%d$,     $m=%d$',M,m),'interpreter','latex');
 axis([Ns(1) Ns(end-1) 1e-15 1e-3]);
-%set(gcf,'paperposition',[0 0 3.5 3.5]); print -depsc2 figs/lapconvK1.eps
+set(gcf,'paperposition',[0 0 3.2 3.5]); print -depsc2 figs/lapconvK1.eps
 end
 
 if 1, Ms = 10:5:120;    % -------------------- M convergence (not incl Schur)
@@ -141,7 +141,7 @@ disp('flux J1 M-convergence for ELS:')
 Js(1,:)'
 figure; semilogy(Ms,abs(Js(1,:)-Js(1,end)),'b+-'); hold on;
 if 0 % use to add K=1e2 data to plot
-  h = load('/home/alex/physics/shravan/dpls/Fig22eData.mat');  % K=1e2 M-conv
+  h = load('../../Fig22eData.mat');  % K=1e2 M-conv
   plot(h.M,abs(h.J-h.J(end)),'bs-');
 end
 semilogy(Ms,nrms,'b.-');
@@ -150,7 +150,8 @@ legend('J_1 conv, Ex.1', 'J_1 conv, Ex.2','soln norm, Ex.1','sing vals, Ex.1','l
 text(15,max(nrms)/10,'(e)');
 %text(60,max(nrms)/10,sprintf('$N=%d,   m=%d$',N,m),'interpreter','latex');
 xlabel('M'); axis([Ms(1) Ms(end-1) 1e-17 max(nrms)]);
-%set(gcf,'paperposition',[0 0 3.5 3.5]); print -depsc2 figs/lapMconv.eps
+% fig 2.2(e)
+set(gcf,'paperposition',[0 0 2.8 3.5]); print -depsc2 figs/lapMconv.eps
 end
 
 if 0 % --------- old Schur tests warm-up (see above for their convergence)

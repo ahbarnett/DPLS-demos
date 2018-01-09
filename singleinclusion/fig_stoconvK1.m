@@ -1,7 +1,7 @@
 function fig_stoconvK1
 % make Stokes no-slip periodic convergence and soln plots.
 % Single inclusion (K=1), native quad for matrix fill, close eval for soln.
-% Adapted from fig_lapconvK1.m
+% Adapted from fig_lapconvK1.m.   Produces Fig. 4.1(a) & (c).
 % Barnett 6/7/16. 6/30/16 brought into BIE2D.
 % X,y,R,H notation, Gary's V=CH, Alex's nullspace fix, nonrandom. 8/17/16
 
@@ -64,6 +64,7 @@ if 1   % soln flow figure
   %for i=-1:1, for j=-1:1, plot(src.x+U.e1*i+U.e2*j,'k*'); end, end % known
   text(0,0,'$\Omega$','interpreter','latex','fontsize',14);
   text(-.58,.45,'(a)'); %,'fontsize',14);
+  % fig 4.1(a):
   drawnow; %set(gcf,'paperposition',[0 0 4 4]); print -depsc2 figs/stosolK1.eps
 end
 
@@ -129,7 +130,8 @@ legend('u conv ELS','J_1 conv ELS','u conv Schur','J_1 conv Schur','u err vs kno
 xlabel('N'); text(70,1e-4,'(c)');
 text(140,1e-8, sprintf('$M=%d$,     $m=%d$',M,m),'interpreter','latex');
 axis([Ns(1) Ns(end-1) 1e-15 1e-3]);
-%set(gcf,'paperposition',[0 0 3.5 3.5]); print -depsc2 figs/stoconvK1.eps
+% fig 4.1c:
+set(gcf,'paperposition',[0 0 3.5 3.5]); print -depsc2 figs/stoconvK1.eps
 end
 
 if 1, Ms = 10:5:120;    % -------------------- M convergence (not incl Schur)
@@ -155,6 +157,7 @@ semilogy(Ms,nrms,'b.-');
 text(15,max(nrms)/10,'(e)');
 text(60,max(nrms)/10,sprintf('$N=%d,   m=%d$',N,m),'interpreter','latex');
 xlabel('M'); axis([Ms(1) Ms(end-1) 1e-17 max(nrms)]);
+% data for fig 2.2(e):
 %set(gcf,'paperposition',[0 0 3 3]); print -depsc2 figs/stoMconv.eps
 end
 

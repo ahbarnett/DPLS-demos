@@ -15,7 +15,7 @@ There are six driver codes:
 fig_lapQconv.m           : Laplace empty BVP convergence (Fig 2.1 ab)
 fig_lapconvK1.m          : periodic Laplace BVP soln & flux conv (Fig 2.2 ace)
 fig_stoQconv.m           : convergence of Laplace empty BVP solver (Fig 2.1 c)
-fig_stoconvK1.m          : periodic Stokes BVP soln & flux conv (Fig 3.1 ac)
+fig_stoconvK1.m          : periodic Stokes BVP soln & flux conv (Fig 4.1 ac)
 tbl_discarray_effcond.m  : square disc array Laplace conductivity, including
                            comparing against Helsing's solution (Table 3.1)
 tbl_discarray_drag.m     : square disc array Stokes permeability (Table 4.1)
