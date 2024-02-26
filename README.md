@@ -20,11 +20,8 @@ Authors: Gary Marple and Alex Barnett.  (C) 2017.
 If you just want the single-inclusion codes, you can stop after the first two lines here. The rest is for the more interesting multi-inclusion case:
 
 ```
-git clone https://github.com/ahbarnett/DPLS-demos.git
-cd DPLS-demos
-git submodule init
-git submodule update
-cd fmm2d
+git clone --recurse-submodules https://github.com/ahbarnett/DPLS-demos.git
+cd DPLS-demos/fmmlib2d
 ```
 Now follow [instructions](https://fmm2d.readthedocs.io/en/latest/install.html) to compile `fmm2d` including its MATLAB/Octave interface. On Linux this means:
 ```
