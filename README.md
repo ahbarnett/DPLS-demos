@@ -67,5 +67,7 @@ Comm. Pure Appl. Math., 71(11), 2334–2380 (2018).
 
 ### Notes
 
+* Some things needing doing are in TODO
+
 * Updated 2024 for git submodules, doc tweaks, for longer-term support.
 
