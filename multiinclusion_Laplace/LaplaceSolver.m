@@ -1,4 +1,4 @@
-function LaplaceSolver(FileName)
+%function LaplaceSolver(FileName)
 % Solve 2D Neumann Laplace doubly-periodic BVP, via proxy periodizing
 
 % Load parameters and inclusion positions.
@@ -95,4 +95,4 @@ disp(['Residual error: ',num2str(Res)])
 
 % Saves variables
 save(FileName,'Sig','Psi','Res','ITER','Time','GMRESTime','-append')
-end
+%end

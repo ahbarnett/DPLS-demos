@@ -3,7 +3,8 @@ codes for doubly-periodic 2D Laplace and Stokes (DPLS) paper.
 
 (C) Alex Barnett 2016-2017
 
-Language: MATLAB (tested on R2016b)
+Language: MATLAB (tested on R2016b and R2022b). Octave (eg 6.4) also works,
+apart from figures are somewhat messed up.
 
 This is a snapshot of a subset of
 [this repo](https://github.com/ahbarnett/BIE2D)

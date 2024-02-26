@@ -4,7 +4,7 @@
 warning('off','MATLAB:rmpath:DirNotFound');
 rmpath(genpath('../multiinclusion_Stokes'))
 rmpath(genpath('../singleinclusion'))
-addpath ../FMM
+addpath ../fmm2d/matlab
 addpath ../kdtree/toolbox
 addpath(genpath('.'))
 

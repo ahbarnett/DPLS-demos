@@ -7,15 +7,15 @@ Language: MATLAB
 By: Gary Marple and Alex Barnett.  (C) 2017.
 
 This directory contains 3rd-party codes including:
+
 lsc2d: Alex Barnett and Bowei Wu (hacked version)
 inpoly: Darren Engwirda
 gauss: Nick Trefethen
 
-Requires: FMMLIB2D and kdtree (both in parent directory; run ../setup.m to
-add them to the path)
+Requires: FMM2D and kdtree (both git submodules; please see ../README.md
+for their installation).
 
 Once in MATLAB, first run setup.m to configure the MATLAB path.
-
 
 1) Running a single solution
 
