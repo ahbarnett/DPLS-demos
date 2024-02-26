@@ -11,8 +11,7 @@ lsc2d: Alex Barnett and Bowei Wu (hacked version)
 inpoly: Darren Engwirda
 gauss: Nick Trefethen
 
-Requires: FMMLIB2D and kdtree (both in parent directory; run ../setup.m to
-add them to the path)
+Requires: FMMLIB2D and kdtree (both in parent directory)
 
 Once in MATLAB, first run setup.m to configure the MATLAB path.
 
