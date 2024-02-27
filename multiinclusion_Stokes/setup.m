@@ -4,7 +4,7 @@
 warning('off','MATLAB:rmpath:DirNotFound');
 rmpath(genpath('../singleinclusion'))
 rmpath(genpath('../multiinclusion_Laplace'))
-addpath ../FMM
+addpath ../fmmlib2d/matlab
 addpath ../kdtree/toolbox
 addpath(genpath('.'))
 

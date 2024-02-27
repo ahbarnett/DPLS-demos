@@ -9,7 +9,7 @@ Dirichlet (conducting inclusion) BVPs,
 and the pressure-drop-driven Stokes Dirichlet (no-slip velocity inclusion) BVP.
 There are separate codebases for single-inclusion (dense direct solver) vs multi-inclusion (fast multipole based iterative solver).
 
-Language: MATLAB (without any Toolboxes) / Octave. The multi-inclusion cases need FMMLIB2D (a fortran library with MEX interfaces).
+Language: MATLAB (without any Toolboxes) / Octave. The multi-inclusion cases need FMMLIB2D (an older fortran library with MEX interfaces).
 
 Authors: Gary Marple and Alex Barnett.  (C) 2017.
 
@@ -17,26 +17,20 @@ Authors: Gary Marple and Alex Barnett.  (C) 2017.
 
 ### Installation and testing
 
-If you just want the single-inclusion codes, you can stop after the first two lines here. The rest is for the more interesting multi-inclusion case:
-
+If you just want the single-inclusion codes, you can stop after the clone and start playing in the `singleinclusion` directory.
+Otherwise, for the FMM-enabled multi-inclusion case, for a Linux/GCC system:
 ```
 git clone --recurse-submodules https://github.com/ahbarnett/DPLS-demos.git
 cd DPLS-demos/fmmlib2d
+make mwrap                     % C
+make mex-matlab                % or mex-octave for Octave
+make test-mex-matlab           % ditto. Should show small errors
+cd ..
 ```
-Now follow [instructions](https://fmm2d.readthedocs.io/en/latest/install.html) to compile `fmm2d` including its MATLAB/Octave interface. On Linux this means:
+You will see that `fmmlib2d/matlab/fmm2d.mexa64` was built.
+To test DPLS, start MATLAB and
 ```
-make matlab
-```
-Check that `lib-static/libfmm2d.a` and `matlab/fmm2d.mexa64` were built.
-Now open MATLAB (at the directory `fmm2d`) and from there do
-```
-addpath matlab
-rfmm2dTest
-```
-which should pass all tests in about 1 second.
-To test DPLS now from MATLAB do
-```
-cd ../multiinclusion_Laplace
+cd multiinclusion_Laplace
 setup
 TestScript                        % will show the geometry
 LaplaceSolver('Script')
@@ -50,7 +44,7 @@ See the READMEs in the directories below for more details.
   * `singleinclusion` - Laplace Neumann and conduction, and Stokes, codes with one inclusion (island) per unit cell, dense linear algebra (by Barnett). Includes codes to generate tables for the periodic square array of discs  
   * `multiinclusion_Laplace` - fast (FMM-based iterative) code for large-scale Laplace demos (by Marple)  
   * `multiinclusion_Stokes` - fast (FMM-based iterative) code for large-scale Stokes demos (by Marple)  
-  * `fmm2d` - git submodule of 2D fast multipole method library from the Flatiron Institute  
+  * `fmmlib2d` - git submodule of 2D fast multipole method library of Gimbutas-Greengard  
   * `kdtree` - kd-tree implementation by Andrea Tagliasacchi, needed for geometry handling in multi-inclusion cases (a snapshot of [this](https://github.com/ataiya/kdtree))  
 
 The demos are found in the first three directories; please follow the READMEs found therein.
@@ -66,5 +60,5 @@ Comm. Pure Appl. Math., 71(11), 2334–2380 (2018).
 
 * Some things needing doing are in TODO
 
-* Updated 2024 for git submodules, doc tweaks, for longer-term support.
+* Updated 2024 for git submodule to fmmlib2d (not fmm2d); doc tweaks, for longer-term support.
 

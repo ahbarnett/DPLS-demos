@@ -1,6 +1,6 @@
 function StokesSolver(FileName,MEM)
 % Doubly periodic Stokes flow with "island" geom using circle of SLP proxy
-% sources. Gary Marple using code from Alex Barnett 6/5/15. If plent of
+% sources. Gary Marple using code from Alex Barnett 6/5/15. If plenty of
 % memory is available, set MEM=1 to create and store self-interaction
 % matrices to speed up GMRES iterations.
 
@@ -42,7 +42,7 @@ alpha=1; % traction jump in x-direction
 beta=0; % traction jump in y-direction
 g=[zeros(2*n,1);alpha*ones(n,1);zeros(4*n,1);beta*ones(n,1)];
 
-% Construct self interactions matrices
+disp("Construct self interactions matrices...")
 tic
 s.x=zeros(sum(N),1);
 CSLP=cell(1,length(N));
@@ -150,6 +150,7 @@ Qvdagg=linsolve(Qv,g,lso);
 rhs=f-Bw*Qvdagg;
 Ap=@(x)Aop(x)-Bw*(QvdagC*x);
 
+disp("starting GMRES...")
 PreT=toc;
 tic
 [eta,~,~,ITER] = gmres(Ap,rhs,[],ACC,MAXIT); % Solves for eta using GMRES

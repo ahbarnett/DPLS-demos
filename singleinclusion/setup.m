@@ -4,7 +4,7 @@
 warning('off','MATLAB:rmpath:DirNotFound');
 rmpath(genpath('../multiinclusion_Stokes'))
 rmpath(genpath('../multiinclusion_Laplace'))
-rmpath(genpath('../fmm2d'))
+rmpath(genpath('../fmmlib2d/matlab'))
 rmpath(genpath('../kdtree'))
 addpath kernels
 addpath utils
