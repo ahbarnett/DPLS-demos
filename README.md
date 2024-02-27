@@ -9,7 +9,7 @@ Dirichlet (conducting inclusion) BVPs,
 and the pressure-drop-driven Stokes Dirichlet (no-slip velocity inclusion) BVP.
 There are separate codebases for single-inclusion (dense direct solver) vs multi-inclusion (fast multipole based iterative solver).
 
-Language: MATLAB (without any Toolboxes) / Octave. The multi-inclusion cases need FMMLIB2D (an older fortran library with MEX interfaces).
+Language: MATLAB (without any Toolboxes). The multi-inclusion cases need FMMLIB2D (an older fortran library with MEX interfaces).
 
 Authors: Gary Marple and Alex Barnett.  (C) 2017.
 
@@ -62,3 +62,4 @@ Comm. Pure Appl. Math., 71(11), 2334–2380 (2018).
 
 * Updated 2024 for git submodule to fmmlib2d (not fmm2d); doc tweaks, for longer-term support.
 
+* This is not Octave-compatible, due to nonexistence of `rng` and problems with the contributed `kdtree` package.
